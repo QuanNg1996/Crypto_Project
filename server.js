@@ -27,6 +27,10 @@ app.use((_, res, next) => {
   next();
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'));
+}
+
 // Crypto Info Route
 app.use('/coins', getCoins);
 app.use('/exchanges', getExchanges);
